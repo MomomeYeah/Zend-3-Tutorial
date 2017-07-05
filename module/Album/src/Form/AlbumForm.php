@@ -22,6 +22,10 @@ class AlbumForm extends Form
             'options' => [
                 'label' => 'Title',
             ],
+            'attributes' => [
+                'class' => "form-control",
+                'placeholder' => 'Album Title',
+            ]
         ]);
 
         $this->add([
@@ -30,14 +34,19 @@ class AlbumForm extends Form
             'options' => [
                 'label' => 'Artist',
             ],
+            'attributes' => [
+                'class' => "form-control",
+                'placeholder' => 'Artist Name',
+            ]
         ]);
 
         $this->add([
             'name' => 'submit',
             'type' => 'submit',
             'attributes' => [
-                'value' => 'Go',
                 'id'    => 'submitbutton',
+                'value' => 'Go',
+                'class' => 'btn btn-primary'
             ],
         ]);
     }
