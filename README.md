@@ -30,10 +30,3 @@ $ vagrant ssh -c 'composer update'
 
 While running, Vagrant maps your host port 8080 to port 80 on the virtual
 machine; you can visit the site at http://localhost:8080/
-
-## Installing Data
-
-`composer development-enable`
-`sudo apt-get install sqlite3`
-`sudo apt-get install php7.0-sqlite3`
-`sqlite data/zftutorial.db < data/schema.sql`
