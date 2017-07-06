@@ -4,10 +4,6 @@ $this->headTitle($title);
 ?>
 <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
-$album = $form->get('title');
-$artist = $form->get('artist');
-$genre = $form->get('genre');
-
 $record_label = $form->get('record_label');
 $record_label->setValueOptions(array(
     'umg' => 'Universal Music Group',
@@ -15,41 +11,9 @@ $record_label->setValueOptions(array(
     'wmg' => 'Warner Music Group',
 ));
 
-$submit = $form->get('submit');
-
 $cancelURL = $this->url('album');
-$form->setAttribute('action', $this->url('album', ['action' => 'add']));
-$form->prepare();
-
-echo $this->form()->openTag($form);
-?>
-<?php // Wrap the elements in divs marked as form groups, and render the
-      // label, element, and errors separately within ?>
-<div class="form-group">
-    <?= $this->formLabel($album) ?>
-    <?= $this->formElement($album) ?>
-    <?= $this->formElementErrors()->render($album, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($artist) ?>
-    <?= $this->formElement($artist) ?>
-    <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($genre) ?>
-    <?= $this->formElement($genre) ?>
-    <?= $this->formElementErrors()->render($genre, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($record_label) ?>
-    <?= $this->formElement($record_label) ?>
-    <?= $this->formElementErrors()->render($record_label, ['class' => 'help-block']) ?>
-</div>
-
-<?= $this->formSubmit($submit) ?>
-<a href="<?= $cancelURL ?>" class="btn btn-default">Cancel</a>
-<?= $this->formHidden($form->get('id')) ?>
-<?= $this->form()->closeTag() ?>
+echo $this->partial('form/default', [
+    'cancelURL' => $cancelURL,
+    'form' => $form,
+    'form_action' => $this->url('album', ['action' => 'add'])
+]);

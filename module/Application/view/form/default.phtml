@@ -1,0 +1,45 @@
+<?php
+$form->setAttribute('action', $form_action);
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+$submits = [];
+$hidden = [];
+foreach ($form->getElements() as $element)
+{
+    $element_type = $element->getAttribute("type");
+    if ( $element_type === "submit" )
+    {
+        $submits[] = $element;
+    }
+    elseif ( $element_type === "hidden" )
+    {
+        $hidden[] = $element;
+    }
+    else
+    {
+        ?><div class="form-group">
+            <?= $this->formLabel($element) ?>
+            <?= $this->formElement($element) ?>
+            <?= $this->formElementErrors()->render($element, ['class' => 'help-block']) ?>
+        </div><?php
+    }
+}
+
+foreach ($submits as $submit)
+{
+    echo $this->formSubmit($submit);
+}
+
+if ( isset($cancelURL) )
+{
+    ?><a href="<?= $cancelURL ?>" class="btn btn-default">Cancel</a><?php
+}
+
+foreach ($hidden as $hid)
+{
+    echo $this->formHidden($hid);
+}
+
+echo $this->form()->closeTag();
