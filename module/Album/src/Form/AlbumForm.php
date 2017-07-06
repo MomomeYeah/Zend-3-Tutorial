@@ -41,6 +41,36 @@ class AlbumForm extends Form
         ]);
 
         $this->add([
+            'name' => 'genre',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Genre',
+                'empty_option' => 'Please select a genre',
+                'value_options' => [
+                    'funk' => 'Funk',
+                    'hiphop' => 'Hip-Hop',
+                    'rock' => 'Rock',
+                ],
+            ],
+            'attributes' => [
+                'class' => "form-control",
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'record_label',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Record Label',
+                'disable_inarray_validator' => true,
+                'empty_option' => 'Please select a record label',
+            ],
+            'attributes' => [
+                'class' => "form-control",
+            ]
+        ]);
+
+        $this->add([
             'name' => 'submit',
             'type' => 'submit',
             'attributes' => [
