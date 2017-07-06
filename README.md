@@ -1,14 +1,13 @@
-# ZendSkeletonApplication
+# Zend Tutorial
 
 ## Introduction
 
-This is a skeleton application using the Zend Framework MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with Zend Framework.
+This project uses the [Zend 3 Tutorial](https://docs.zendframework.com/tutorials/getting-started/overview/)
+as a baseline for a bit of experimenting on how best to use it in an actual project.
 
-## Using Vagrant
+## Setup
 
-This skeleton includes a `Vagrantfile` based on ubuntu 16.04 (bento box)
+This project includes a `Vagrantfile` based on ubuntu 16.04 (bento box)
 with configured Apache2 and PHP 7.0. Start it up using:
 
 ```bash
