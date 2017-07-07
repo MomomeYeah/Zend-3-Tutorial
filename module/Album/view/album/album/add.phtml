@@ -5,11 +5,12 @@ $this->headTitle($title);
 <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
 $record_label = $form->get('record_label');
-$record_label->setValueOptions(array(
+$record_label->setValueOptions([
     'umg' => 'Universal Music Group',
     'sony' => 'Sony Music',
     'wmg' => 'Warner Music Group',
-));
+    'zzz' => 'ZZZ Music Group'
+]);
 
 $cancelURL = $this->url('album');
 echo $this->partial('form/default', [

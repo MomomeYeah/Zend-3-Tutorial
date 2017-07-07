@@ -10,17 +10,17 @@ use Zend\View\Model\ViewModel;
 
 class AlbumController extends AbstractActionController
 {
-    private $table;
+    private $albumTable;
 
-    public function __construct(AlbumTable $table)
+    public function __construct(AlbumTable $albumTable)
     {
-        $this->table = $table;
+        $this->albumTable = $albumTable;
     }
 
     public function indexAction()
     {
         return new ViewModel([
-            'albums' => $this->table->fetchAll(),
+            'albums' => $this->albumTable->fetchAll(),
         ]);
     }
 
@@ -47,7 +47,7 @@ class AlbumController extends AbstractActionController
         }
 
         $album->exchangeArray($form->getData());
-        $this->table->saveAlbum($album);
+        $this->albumTable->saveAlbum($album);
         return $this->redirect()->toRoute('album');
     }
 
@@ -64,7 +64,7 @@ class AlbumController extends AbstractActionController
         // in redirecting to the landing page.
         try
         {
-            $album = $this->table->getAlbum($id);
+            $album = $this->albumTable->getAlbum($id);
         }
         catch (\Exception $e)
         {
@@ -89,7 +89,7 @@ class AlbumController extends AbstractActionController
             return $viewData;
         }
 
-        $this->table->saveAlbum($album);
+        $this->albumTable->saveAlbum($album);
 
         // Redirect to album list
         return $this->redirect()->toRoute('album', ['action' => 'index']);
@@ -111,7 +111,7 @@ class AlbumController extends AbstractActionController
             if ($del == 'Yes')
             {
                 $id = (int) $request->getPost('id');
-                $this->table->deleteAlbum($id);
+                $this->albumTable->deleteAlbum($id);
             }
 
             // Redirect to list of albums
@@ -120,7 +120,7 @@ class AlbumController extends AbstractActionController
 
         return [
             'id'    => $id,
-            'album' => $this->table->getAlbum($id),
+            'album' => $this->albumTable->getAlbum($id),
         ];
     }
 }

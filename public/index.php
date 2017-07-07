@@ -9,6 +9,13 @@ use Zend\Stdlib\ArrayUtils;
  */
 chdir(dirname(__DIR__));
 
+if ( array_key_exists("APPLICATION_ENV", $_SERVER) && $_SERVER["APPLICATION_ENV"] === "development" )
+{
+    error_reporting(E_ALL|E_STRICT);
+    ini_set('display_errors', 'on');
+    //Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(false);
+}
+
 // Decline static file requests back to the PHP built-in webserver
 if (php_sapi_name() === 'cli-server') {
     $path = realpath(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

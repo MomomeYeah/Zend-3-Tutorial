@@ -59,10 +59,9 @@ class AlbumForm extends Form
 
         $this->add([
             'name' => 'record_label',
-            'type' => 'select',
+            'type' => 'Album\Form\RecordLabelSelect',
             'options' => [
                 'label' => 'Record Label',
-                'disable_inarray_validator' => true,
                 'empty_option' => 'Please select a record label',
             ],
             'attributes' => [

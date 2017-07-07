@@ -11,7 +11,7 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\Validator\StringLength;
 
-class Album
+class Album implements InputFilterAwareInterface
 {
     public $id;
     public $artist;
@@ -129,16 +129,7 @@ class Album
                 ['name' => StripTags::class],
                 ['name' => StringTrim::class],
             ],
-            'validators' => [
-                [
-                    'name' => StringLength::class,
-                    'options' => [
-                        'encoding' => 'UTF-8',
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-            ],
+            'validators' => [],
         ]);
 
         $this->inputFilter = $inputFilter;
