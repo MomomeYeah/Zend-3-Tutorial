@@ -1,0 +1,24 @@
+<?php
+$title = 'Record Labels';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('record_label', ['action' => 'add']) ?>">Add Record Label</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($record_labels as $record_label) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($record_label->name) ?></td>
+        <td>
+            <a href="<?= $this->url('record_label', ['action' => 'edit', 'id' => $record_label->id]) ?>">Edit</a>
+            <a href="<?= $this->url('record_label', ['action' => 'delete', 'id' => $record_label->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

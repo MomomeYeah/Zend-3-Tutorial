@@ -6,6 +6,7 @@ echo $this->form()->openTag($form);
 
 $submits = [];
 $hidden = [];
+
 foreach ($form->getElements() as $element)
 {
     $element_type = $element->getAttribute("type");
@@ -19,7 +20,8 @@ foreach ($form->getElements() as $element)
     }
     else
     {
-        ?><div class="form-group">
+        $error_class = count($element->getMessages()) > 0 ? "has-error" : "";
+        ?><div class="form-group <?= $error_class ?>">
             <?= $this->formLabel($element) ?>
             <?= $this->formElement($element) ?>
             <?= $this->formElementErrors()->render($element, ['class' => 'help-block']) ?>

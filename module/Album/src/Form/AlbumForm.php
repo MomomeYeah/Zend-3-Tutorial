@@ -21,6 +21,9 @@ class AlbumForm extends Form
             'type' => 'text',
             'options' => [
                 'label' => 'Title',
+                'label_attributes' => [
+                    'class' => 'control-label',
+                ],
             ],
             'attributes' => [
                 'class' => "form-control",
@@ -33,6 +36,9 @@ class AlbumForm extends Form
             'type' => 'text',
             'options' => [
                 'label' => 'Artist',
+                'label_attributes' => [
+                    'class' => 'control-label',
+                ],
             ],
             'attributes' => [
                 'class' => "form-control",
@@ -45,6 +51,9 @@ class AlbumForm extends Form
             'type' => 'select',
             'options' => [
                 'label' => 'Genre',
+                'label_attributes' => [
+                    'class' => 'control-label',
+                ],
                 'empty_option' => 'Please select a genre',
                 'value_options' => [
                     'funk' => 'Funk',
@@ -62,6 +71,9 @@ class AlbumForm extends Form
             'type' => 'Album\Form\RecordLabelSelect',
             'options' => [
                 'label' => 'Record Label',
+                'label_attributes' => [
+                    'class' => 'control-label',
+                ],
                 'empty_option' => 'Please select a record label',
             ],
             'attributes' => [

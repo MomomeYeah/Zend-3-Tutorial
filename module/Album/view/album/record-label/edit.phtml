@@ -1,0 +1,12 @@
+<?php
+$title = 'Edit Record Label';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$cancelURL = $this->url('record_label');
+echo $this->partial('form/default', [
+    'cancelURL' => $cancelURL,
+    'form' => $form,
+    'form_action' => $this->url('record_label', ['action' => 'edit', 'id' => $id])
+]);

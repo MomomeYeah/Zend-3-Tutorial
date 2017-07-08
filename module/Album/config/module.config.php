@@ -22,6 +22,34 @@ return [
                     ],
                 ],
             ],
+            'genre' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/genre[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\GenreController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'record_label' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/record-label[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\RecordLabelController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
 

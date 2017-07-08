@@ -1,0 +1,24 @@
+<?php
+$title = 'Genres';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('genre', ['action' => 'add']) ?>">Add Genre</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($genres as $genre) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($genre->name) ?></td>
+        <td>
+            <a href="<?= $this->url('genre', ['action' => 'edit', 'id' => $genre->id]) ?>">Edit</a>
+            <a href="<?= $this->url('genre', ['action' => 'delete', 'id' => $genre->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

@@ -1,0 +1,12 @@
+<?php
+$title = 'Add Genre';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$cancelURL = $this->url('genre');
+echo $this->partial('form/default', [
+    'cancelURL' => $cancelURL,
+    'form' => $form,
+    'form_action' => $this->url('genre', ['action' => 'add'])
+]);
