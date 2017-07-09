@@ -1,56 +1,12 @@
 <?php
-$title = 'Edit album';
+$title = 'Edit Album';
 $this->headTitle($title);
 ?>
 <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
-$album = $form->get('title');
-$artist = $form->get('artist');
-$genre = $form->get('genre');
-
-$record_label = $form->get('record_label');
-$record_label->setValueOptions([
-    'umg' => 'Universal Music Group',
-    'sony' => 'Sony Music',
-    'wmg' => 'Warner Music Group',
-]);
-
-$submit = $form->get('submit');
-
 $cancelURL = $this->url('album');
-$form->setAttribute('action', $this->url('album', [
-    'action' => 'edit',
-    'id'     => $id,
-]));
-$form->prepare();
-
-echo $this->form()->openTag($form);
-?>
-<div class="form-group">
-    <?= $this->formLabel($album) ?>
-    <?= $this->formElement($album) ?>
-    <?= $this->formElementErrors()->render($album, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($artist) ?>
-    <?= $this->formElement($artist) ?>
-    <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($genre) ?>
-    <?= $this->formElement($genre) ?>
-    <?= $this->formElementErrors()->render($genre, ['class' => 'help-block']) ?>
-</div>
-
-<div class="form-group">
-    <?= $this->formLabel($record_label) ?>
-    <?= $this->formElement($record_label) ?>
-    <?= $this->formElementErrors()->render($record_label, ['class' => 'help-block']) ?>
-</div>
-
-<?= $this->formSubmit($submit) ?>
-<a href="<?= $cancelURL ?>" class="btn btn-default">Cancel</a>
-<?= $this->formHidden($form->get('id')) ?>
-<?= $this->form()->closeTag() ?>
+echo $this->partial('form/default', [
+    'cancelURL' => $cancelURL,
+    'form' => $form,
+    'form_action' => $this->url('album', ['action' => 'edit', 'id' => $id])
+]);

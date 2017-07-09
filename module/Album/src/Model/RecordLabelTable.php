@@ -19,6 +19,17 @@ class RecordLabelTable
         return $this->tableGateway->select();
     }
 
+    public function fetchAllAsArray()
+    {
+        $labels = $this->fetchAll();
+        $ret = [];
+        foreach($labels as $label)
+        {
+            $ret[$label->id] = $label->name;
+        }
+        return $ret;
+    }
+
     public function getRecordLabel($id)
     {
         $id = (int) $id;

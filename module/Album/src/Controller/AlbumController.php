@@ -11,10 +11,13 @@ use Zend\View\Model\ViewModel;
 class AlbumController extends AbstractActionController
 {
     private $albumTable;
+    private $albumForm;
 
-    public function __construct(AlbumTable $albumTable)
+    public function __construct(
+            AlbumTable $albumTable, AlbumForm $albumForm)
     {
         $this->albumTable = $albumTable;
+        $this->albumForm = $albumForm;
     }
 
     public function indexAction()
@@ -26,8 +29,7 @@ class AlbumController extends AbstractActionController
 
     public function addAction()
     {
-
-        $form = new AlbumForm();
+        $form = $this->albumForm;
         $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
@@ -71,7 +73,7 @@ class AlbumController extends AbstractActionController
             return $this->redirect()->toRoute('album', ['action' => 'index']);
         }
 
-        $form = new AlbumForm();
+        $form = $this->albumForm;
         $form->bind($album);
         $form->get('submit')->setAttribute('value', 'Edit');
 

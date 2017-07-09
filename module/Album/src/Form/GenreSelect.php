@@ -4,9 +4,9 @@ namespace Album\Form;
 
 use Zend\Form\Element\Select;
 use Zend\Validator\Explode as ExplodeValidator;
-use Album\Validator\RecordLabelValidator;
+use Album\Validator\GenreValidator;
 
-class RecordLabelSelect extends Select {
+class GenreSelect extends Select {
 
     /**
      * Get validator
@@ -16,7 +16,7 @@ class RecordLabelSelect extends Select {
     protected function getValidator()
     {
         if (null === $this->validator && ! $this->disableInArrayValidator()) {
-            $validator = new RecordLabelValidator([
+            $validator = new GenreValidator([
                 'haystack' => $this->getValueOptionsValues(),
                 'strict'   => false
             ]);
@@ -32,5 +32,7 @@ class RecordLabelSelect extends Select {
         }
         return $this->validator;
     }
+
+
 
 }

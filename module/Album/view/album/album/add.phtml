@@ -1,16 +1,20 @@
 <?php
-$title = 'Add new album';
+$title = 'Add Album';
 $this->headTitle($title);
 ?>
 <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
 $record_label = $form->get('record_label');
-$record_label->setValueOptions([
-    'umg' => 'Universal Music Group',
-    'sony' => 'Sony Music',
-    'wmg' => 'Warner Music Group',
-    'zzz' => 'ZZZ Music Group'
-]);
+$options = $record_label->getValueOptions();
+$val = 'ZZZ Music Group';
+$options[base64_encode($val)] = $val;
+$record_label->setValueOptions($options);
+
+$genre = $form->get('genre');
+$options = $genre->getValueOptions();
+$val = 'Not a Genre';
+$options[base64_encode($val)] = $val;
+$genre->setValueOptions($options);
 
 $cancelURL = $this->url('album');
 echo $this->partial('form/default', [

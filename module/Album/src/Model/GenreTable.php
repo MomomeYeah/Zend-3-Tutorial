@@ -19,6 +19,17 @@ class GenreTable
         return $this->tableGateway->select();
     }
 
+    public function fetchAllAsArray()
+    {
+        $genres = $this->fetchAll();
+        $ret = [];
+        foreach($genres as $genre)
+        {
+            $ret[$genre->id] = $genre->name;
+        }
+        return $ret;
+    }
+
     public function getGenre($id)
     {
         $id = (int) $id;

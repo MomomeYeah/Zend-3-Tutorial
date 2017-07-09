@@ -18,6 +18,7 @@ class Album implements InputFilterAwareInterface
     public $title;
     public $genre;
     public $record_label;
+    public $pre_release;
 
     private $inputFilter;
 
@@ -28,6 +29,7 @@ class Album implements InputFilterAwareInterface
         $this->title        = !empty($data['title']) ? $data['title'] : null;
         $this->genre        = !empty($data['genre']) ? $data['genre'] : null;
         $this->record_label = !empty($data['record_label']) ? $data['record_label'] : null;
+        $this->pre_release  = !empty($data['pre_release']) ? $data['pre_release'] : null;
     }
 
     public function getArrayCopy()
@@ -37,7 +39,8 @@ class Album implements InputFilterAwareInterface
             'artist'        => $this->artist,
             'title'         => $this->title,
             'genre'         => $this->genre,
-            'record_label'  => $this->record_label
+            'record_label'  => $this->record_label,
+            'pre_release'   => $this->pre_release
         ];
     }
 
@@ -124,6 +127,16 @@ class Album implements InputFilterAwareInterface
 
         $inputFilter->add([
             'name' => 'record_label',
+            'required' => true,
+            'filters' => [
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+            ],
+            'validators' => [],
+        ]);
+
+        $inputFilter->add([
+            'name' => 'pre_release',
             'required' => true,
             'filters' => [
                 ['name' => StripTags::class],

@@ -3,10 +3,13 @@
 namespace Album\Form;
 
 use Zend\Form\Form;
+use Album\Model\GenreTable;
+use Album\Model\RecordLabelTable;
 
 class AlbumForm extends Form
 {
-    public function __construct($name = null)
+    public function __construct($name = null,
+        GenreTable $genreTable, RecordLabelTable $recordLabelTable)
     {
         // We will ignore the name provided to the constructor
         parent::__construct('album');
@@ -48,18 +51,14 @@ class AlbumForm extends Form
 
         $this->add([
             'name' => 'genre',
-            'type' => 'select',
+            'type' => 'Album\Form\GenreSelect',
             'options' => [
                 'label' => 'Genre',
                 'label_attributes' => [
                     'class' => 'control-label',
                 ],
                 'empty_option' => 'Please select a genre',
-                'value_options' => [
-                    'funk' => 'Funk',
-                    'hiphop' => 'Hip-Hop',
-                    'rock' => 'Rock',
-                ],
+                'value_options' => $genreTable->fetchAllAsArray(),
             ],
             'attributes' => [
                 'class' => "form-control",
@@ -75,6 +74,26 @@ class AlbumForm extends Form
                     'class' => 'control-label',
                 ],
                 'empty_option' => 'Please select a record label',
+                'value_options' => $recordLabelTable->fetchAllAsArray()
+            ],
+            'attributes' => [
+                'class' => "form-control",
+            ]
+        ]);
+
+        $this->add([
+            'name' => 'pre_release',
+            'type' => 'select',
+            'options' => [
+                'label' => 'Pre-Release',
+                'label_attributes' => [
+                    'class' => 'control-label',
+                ],
+                'empty_option' => 'Is this album currently pre-release?',
+                'value_options' => [
+                    'yes' => 'Yes',
+                    'no' => 'No',
+                ],
             ],
             'attributes' => [
                 'class' => "form-control",

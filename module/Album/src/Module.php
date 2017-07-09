@@ -57,8 +57,12 @@ class Module implements ConfigProviderInterface
         return [
             'factories' => [
                 Controller\AlbumController::class => function($container) {
+                    $genreTable = $container->get(Model\GenreTable::class);
+                    $recordLabelTable = $container->get(Model\RecordLabelTable::class);
+
                     return new Controller\AlbumController(
-                        $container->get(Model\AlbumTable::class)
+                        $container->get(Model\AlbumTable::class),
+                        new Form\AlbumForm(null, $genreTable, $recordLabelTable)
                     );
                 },
                 Controller\GenreController::class => function($container) {
