@@ -74,7 +74,7 @@ class AlbumForm extends Form
                     'class' => 'control-label',
                 ],
                 'empty_option' => 'Please select a record label',
-                'value_options' => $recordLabelTable->fetchAllAsArray()
+                'value_options' => $recordLabelTable->fetchAllAsArray(),
             ],
             'attributes' => [
                 'class' => "form-control",
