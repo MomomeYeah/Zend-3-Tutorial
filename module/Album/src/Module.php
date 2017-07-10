@@ -18,10 +18,10 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Form\AlbumForm::class => function($container) {
+                Form\AlbumForm::class => function($container, $name, $options) {
                     $genreTable = $container->get(Model\GenreTable::class);
                     $recordLabelTable = $container->get(Model\RecordLabelTable::class);
-                    return new Form\AlbumForm(null, $genreTable, $recordLabelTable);
+                    return new Form\AlbumForm($name, $options, $genreTable, $recordLabelTable);
                 },
                 Model\AlbumTable::class => function($container) {
                     $tableGateway = $container->get(Model\AlbumTableGateway::class);

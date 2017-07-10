@@ -8,7 +8,7 @@ use Album\Model\RecordLabelTable;
 
 class AlbumForm extends Form
 {
-    public function __construct($name = null,
+    public function __construct($name = null, $options = [],
         GenreTable $genreTable, RecordLabelTable $recordLabelTable)
     {
         // We will ignore the name provided to the constructor
@@ -67,7 +67,7 @@ class AlbumForm extends Form
 
         $this->add([
             'name' => 'record_label',
-            'type' => 'Album\Form\RecordLabelSelect',
+            'type' => RecordLabelSelect::class,
             'options' => [
                 'label' => 'Record Label',
                 'label_attributes' => [

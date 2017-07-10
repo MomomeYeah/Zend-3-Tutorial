@@ -3,10 +3,11 @@
 namespace Album\Form;
 
 use Zend\Form\Element\Select;
+use Zend\InputFilter\InputProviderInterface;
 use Zend\Validator\Explode as ExplodeValidator;
 use Album\Validator\RecordLabelValidator;
 
-class RecordLabelSelect extends Select {
+class RecordLabelSelect extends Select implements InputProviderInterface {
 
     /**
      * Get validator
