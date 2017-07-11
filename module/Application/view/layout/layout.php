@@ -8,7 +8,7 @@ function route_url_matches($uri, $default=False)
         $request_uri === $uri;
 }
 
-function get_header_active_class($uri, $default)
+function get_header_active_class($uri, $default=False)
 {
     return route_url_matches($uri, $default) ? "active" : "";
 }
