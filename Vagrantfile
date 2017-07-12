@@ -6,7 +6,29 @@ VAGRANTFILE_API_VERSION = '2'
 @script = <<SCRIPT
 # Install dependencies
 apt-get update
-apt-get install -y apache2 git curl sqlite3 php7.0 php7.0-bcmath php7.0-bz2 php7.0-cli php7.0-curl php7.0-intl php7.0-json php7.0-mbstring php7.0-opcache php7.0-soap php7.0-sqlite3 php7.0-xml php7.0-xsl php7.0-zip libapache2-mod-php7.0
+apt-get install -y apache2 git curl sqlite3 php7.0 php7.0-bcmath php7.0-bz2 php7.0-cli php7.0-curl php7.0-intl php7.0-json php7.0-mbstring php7.0-opcache php7.0-soap php7.0-sqlite3 php7.0-pgsql php7.0-xml php7.0-xsl php7.0-zip libapache2-mod-php7.0
+
+apt-get install -y postgresql-9.5 postgresql-contrib-9.5
+
+APP_DB_USER="dev"
+APP_DB_PASSWORD="dev"
+APP_DB_NAME="dev"
+POSTGRES_PASSWORD="postgres"
+PG_CONF="/etc/postgresql/9.5/main/postgresql.conf"
+PG_HBA="/etc/postgresql/9.5/main/pg_hba.conf"
+echo -e "$POSTGRES_PASSWORD\n$POSTGRES_PASSWORD" | (sudo passwd postgres)
+echo "host    $APP_DB_NAME      $APP_DB_USER             samenet                 md5" >> "$PG_HBA"
+echo "client_encoding = utf8" >> "$PG_CONF"
+service postgresql restart
+
+cat << EOF | su - postgres -c psql
+DROP USER $APP_DB_USER;
+CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASSWORD';
+DROP DATABASE $APP_DB_NAME;
+CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER ENCODING='UTF8' TEMPLATE=template1;
+EOF
+
+echo "${APP_DB_PASSWORD}" | psql -h localhost -p 5432 -U "${APP_DB_USER}" -f /var/www/data/schema.sql "${APP_DB_NAME}"
 
 # Configure Apache
 echo "<VirtualHost *:80>
@@ -43,7 +65,6 @@ SCRIPT
 @scriptSetup = <<SCRIPT
 composer install
 composer development-enable
-sqlite3 data/zftutorial.db < data/schema.sql
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

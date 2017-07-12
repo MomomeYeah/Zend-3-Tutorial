@@ -11,9 +11,28 @@
  * file.
  */
 
+$env = getenv('DATABASE_URL');
+$user = 'dev';
+$password = 'dev';
+$host = 'localhost';
+$port = 5432;
+$dbname = 'dev';
+if ( ! empty($env) )
+{
+    $dbopts = parse_url($env);
+    $user = $dbopts["user"];
+    $password = $dbopts["pass"];
+    $host = $dbopts["host"];
+    $port = $dbopts["port"];
+    $dbname = ltrim($dbopts["path"],'/');
+}
 return [
     'db' => [
-        'driver' => 'Pdo',
-        'dsn'    => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
+        'driver'    => 'PDO_PGSQL',
+        'user'      => $user,
+        'password'  => $password,
+        'host'      => $host,
+        'port'      => $port,
+        'dbname'    => $dbname
     ],
 ];

@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS genre;
 CREATE TABLE genre (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(100)
 );
 INSERT INTO genre (name) VALUES ('Hip-Hop');
@@ -13,7 +13,7 @@ INSERT INTO genre (name) VALUES ('Indie');
 
 DROP TABLE IF EXISTS record_label;
 CREATE TABLE record_label (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(100)
 );
 INSERT INTO record_label (name) VALUES ('Universal Music Group');
@@ -28,12 +28,12 @@ INSERT INTO record_label (name) VALUES ('Eleven');
 
 DROP TABLE IF EXISTS album;
 CREATE TABLE album (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    artist varchar(100) NOT NULL,
-    title varchar(100) NOT NULL,
-    genre varchar2(100) REFERENCES genre(id),
-    record_label varchar2(100) REFERENCES record_label(id),
-    pre_release varchar2(10) CHECK (pre_release IN ('yes', 'no'))
+    id SERIAL PRIMARY KEY,
+    artist VARCHAR(100) NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    genre INTEGER REFERENCES genre(id),
+    record_label INTEGER REFERENCES record_label(id),
+    pre_release VARCHAR(10) CHECK (pre_release IN ('yes', 'no'))
 );
 INSERT INTO album (artist, title, genre, record_label, pre_release)
 VALUES ('The Military Wives', 'In My Dreams',
