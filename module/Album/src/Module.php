@@ -23,6 +23,10 @@ class Module implements ConfigProviderInterface
                     $recordLabelTable = $container->get(Model\RecordLabelTable::class);
                     return new Form\AlbumForm($name, $options, $genreTable, $recordLabelTable);
                 },
+                Model\AlbumAPI::class => function($container) {
+                    $table = $container->get(Model\AlbumTable::class);
+                    return new Model\AlbumAPI($table);
+                },
                 Model\AlbumTable::class => function($container) {
                     $tableGateway = $container->get(Model\AlbumTableGateway::class);
                     return new Model\AlbumTable($tableGateway);
@@ -61,6 +65,11 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
+                Controller\AlbumAPIController::class => function($container) {
+                    return new Controller\AlbumAPIController(
+                        $container->get(Model\AlbumAPI::class)
+                    );
+                },
                 Controller\AlbumController::class => function($container) {
                     return new Controller\AlbumController(
                         $container->get(Model\AlbumTable::class),

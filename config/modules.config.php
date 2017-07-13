@@ -19,6 +19,7 @@ return [
     'Zend\Db',
     'Zend\Router',
     'Zend\Validator',
+    'Album',
+    'API',
     'Application',
-    'Album'
 ];
