@@ -25,7 +25,8 @@
         "psr-4": {
             "Album\\": "module/Album/src/",
             "API\\": "module/API/src/",
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "REST\\": "module/REST/src/"
         }
     },
     "autoload-dev": {

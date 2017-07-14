@@ -22,4 +22,5 @@ return [
     'Album',
     'API',
     'Application',
+    'REST',
 ];

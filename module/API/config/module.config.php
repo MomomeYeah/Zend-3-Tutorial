@@ -11,7 +11,7 @@ return [
             'api' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route' => '/api/album[/]',
+                    'route' => '/api/json/album[/]',
                     'defaults' => [
                         'controller' => \Album\Controller\AlbumAPIController::class,
                         'action'     => 'endpoint',
