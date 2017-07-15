@@ -10,6 +10,14 @@ abstract class Entity implements InputFilterAwareInterface
 {
     protected $inputFilter;
 
+    public function __construct($data = NULL)
+    {
+        if ( ! is_null($data) )
+        {
+            $this->exchangeArray($data);
+        }
+    }
+
     // given a data array of $key=>$value pairs, populate properties of $this
     // where the names are given by the $key values, and the values of those
     // properties are given by the $value values

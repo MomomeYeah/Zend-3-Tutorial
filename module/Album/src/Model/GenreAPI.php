@@ -4,7 +4,7 @@ namespace Album\Model;
 
 class GenreAPI
 {
-    private $albumTable;
+    private $genreTable;
 
     public function __construct(GenreTable $genreTable)
     {
@@ -17,10 +17,35 @@ class GenreAPI
         $ret = [];
         foreach($genres as $genre)
         {
-            $ret[$genre->id] = [
-                "name"  => $genre->name,
-            ];
+            $ret[$genre->id] = $genre->getArrayCopy();
         }
         return $ret;
+    }
+
+    public function view($id)
+    {
+        $genre = $this->genreTable->getGenre($id);
+        return $genre->getArrayCopy();
+    }
+
+    public function edit($id, $data)
+    {
+        $genre = new Genre($data);
+        $genre->id = $id;
+        $this->genreTable->saveGenre($genre);
+        return $this->view($id);
+    }
+
+    public function add($data)
+    {
+        $genre = new Genre($data);
+        $id = $this->genreTable->saveGenre($genre);
+        return $this->view($id);
+    }
+
+    public function delete($id)
+    {
+        $this->genreTable->deleteGenre($id);
+        return null;
     }
 }

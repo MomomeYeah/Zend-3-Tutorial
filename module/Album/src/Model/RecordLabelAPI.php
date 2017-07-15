@@ -17,10 +17,35 @@ class RecordLabelAPI
         $ret = [];
         foreach($recordLabels as $recordLabel)
         {
-            $ret[$recordLabel->id] = [
-                "name"  => $recordLabel->name,
-            ];
+            $ret[$recordLabel->id] = $recordLabel->getArrayCopy();
         }
         return $ret;
+    }
+
+    public function view($id)
+    {
+        $recordLabel = $this->recordLabelTable->getRecordLabel($id);
+        return $recordLabel->getArrayCopy();
+    }
+
+    public function edit($id, $data)
+    {
+        $recordLabel = new RecordLabel($data);
+        $recordLabel->id = $id;
+        $this->recordLabelTable->saveRecordLabel($recordLabel);
+        return $this->view($id);
+    }
+
+    public function add($data)
+    {
+        $recordLabel = new RecordLabel($data);
+        $id = $this->recordLabelTable->saveRecordLabel($recordLabel);
+        return $this->view($id);
+    }
+
+    public function delete($id)
+    {
+        $this->recordLabelTable->deleteRecordLabel($id);
+        return null;
     }
 }

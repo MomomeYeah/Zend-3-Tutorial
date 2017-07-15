@@ -53,7 +53,10 @@ class GenreTable
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
-            return;
+            return $this->tableGateway->
+                getAdapter()->
+                getDriver()->
+                getLastGeneratedValue('genre_id_seq');
         }
 
         if (! $this->getGenre($id)) {
