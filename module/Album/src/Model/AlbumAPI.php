@@ -2,8 +2,6 @@
 
 namespace Album\Model;
 
-use RuntimeException;
-
 class AlbumAPI
 {
     private $albumTable;
@@ -20,8 +18,8 @@ class AlbumAPI
         foreach($albums as $album)
         {
             $ret[$album->id] = [
-                "artist"        => $album->artist,
-                "title"         => $album->title,
+                "artist"    => $album->artist,
+                "title"     => $album->title,
             ];
         }
         return $ret;

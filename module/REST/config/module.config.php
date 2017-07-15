@@ -3,7 +3,6 @@
 namespace REST;
 
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -18,11 +17,10 @@ return [
     ],
 
     'controllers' => [
-        'factories' => [
-            Controller\AlbumController::class => InvokableFactory::class,
-        ],
         'aliases' => [
-            'album' => Controller\AlbumController::class
+            'album'         => \Album\Controller\AlbumRESTController::class,
+            'genre'         => \Album\Controller\GenreRESTController::class,
+            'record-label'  => \Album\Controller\RecordLabelRESTController::class,
         ]
     ],
 

@@ -1,13 +1,20 @@
 <?php
 
-namespace REST\Controller;
+namespace Album\Controller;
 
-use Album\Model\AlbumAPI;
+use Album\Model\RecordLabelAPI;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-class AlbumController extends AbstractRestfulController
+class RecordLabelRESTController extends AbstractRestfulController
 {
+    private $api;
+
+    public function __construct(RecordLabelAPI $api)
+    {
+        $this->api = $api;
+    }
+
     public function getList()
     {
         return new JsonModel([

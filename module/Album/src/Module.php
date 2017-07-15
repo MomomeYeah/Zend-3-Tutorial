@@ -37,6 +37,10 @@ class Module implements ConfigProviderInterface
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                 },
+                Model\GenreAPI::class => function($container) {
+                    $table = $container->get(Model\GenreTable::class);
+                    return new Model\GenreAPI($table);
+                },
                 Model\GenreTable::class => function($container) {
                     $tableGateway = $container->get(Model\GenreTableGateway::class);
                     return new Model\GenreTable($tableGateway);
@@ -46,6 +50,10 @@ class Module implements ConfigProviderInterface
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Genre());
                     return new TableGateway('genre', $dbAdapter, null, $resultSetPrototype);
+                },
+                Model\RecordLabelAPI::class => function($container) {
+                    $table = $container->get(Model\RecordLabelTable::class);
+                    return new Model\RecordLabelAPI($table);
                 },
                 Model\RecordLabelTable::class => function($container) {
                     $tableGateway = $container->get(Model\RecordLabelTableGateway::class);
@@ -76,14 +84,39 @@ class Module implements ConfigProviderInterface
                         $container->get(Form\AlbumForm::class)
                     );
                 },
+                Controller\AlbumRESTController::class => function($container) {
+                    return new Controller\AlbumRESTController(
+                        $container->get(Model\AlbumAPI::class)
+                    );
+                },
+                Controller\GenreAPIController::class => function($container) {
+                    return new Controller\GenreAPIController(
+                        $container->get(Model\GenreAPI::class)
+                    );
+                },
                 Controller\GenreController::class => function($container) {
                     return new Controller\GenreController(
                         $container->get(Model\GenreTable::class)
                     );
                 },
+                Controller\GenreRESTController::class => function($container) {
+                    return new Controller\GenreRESTController(
+                        $container->get(Model\GenreAPI::class)
+                    );
+                },
+                Controller\RecordLabelAPIController::class => function($container) {
+                    return new Controller\RecordLabelAPIController(
+                        $container->get(Model\RecordLabelAPI::class)
+                    );
+                },
                 Controller\RecordLabelController::class => function($container) {
                     return new Controller\RecordLabelController(
                         $container->get(Model\RecordLabelTable::class)
+                    );
+                },
+                Controller\RecordLabelRESTController::class => function($container) {
+                    return new Controller\RecordLabelRESTController(
+                        $container->get(Model\RecordLabelAPI::class)
                     );
                 },
             ],

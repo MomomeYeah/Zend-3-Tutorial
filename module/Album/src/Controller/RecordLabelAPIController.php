@@ -2,12 +2,12 @@
 
 namespace Album\Controller;
 
-use Album\Model\AlbumAPI;
+use Album\Model\RecordLabelAPI;
 use API\Controller\APIController;
 
-class AlbumAPIController extends APIController
+class RecordLabelAPIController extends APIController
 {
-    public function __construct(AlbumAPI $api)
+    public function __construct(RecordLabelAPI $api)
     {
         parent::__construct();
         $this->api = $api;
