@@ -31,6 +31,8 @@ class AlbumForm extends Form
             'attributes' => [
                 'class' => "form-control",
                 'placeholder' => 'Album Title',
+                'field-required' => 'true',
+                'help-text' => 'The title of the album',
             ]
         ]);
 
@@ -46,6 +48,7 @@ class AlbumForm extends Form
             'attributes' => [
                 'class' => "form-control",
                 'placeholder' => 'Artist Name',
+                'field-optional' => 'true',
             ]
         ]);
 

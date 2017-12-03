@@ -24,6 +24,11 @@ foreach ($form->getElements() as $element)
         ?><div class="form-group <?= $error_class ?>">
             <?= $this->formLabel($element) ?>
             <?= $this->formElement($element) ?>
+            <?php if ( $element->hasAttribute("help-text") ): ?>
+                <small class="form-text text-muted">
+                    <?= $element->getAttribute("help-text") ?>
+                </small>
+            <?php endif; ?>
             <?= $this->formElementErrors()->render($element, ['class' => 'help-block']) ?>
         </div><?php
     }
