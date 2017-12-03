@@ -10,7 +10,8 @@ class APIController extends AbstractActionController
 {
     protected $api;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->api = NULL;
     }
 

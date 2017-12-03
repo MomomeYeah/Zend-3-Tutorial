@@ -4,14 +4,13 @@ namespace Album\Model;
 
 use DomainException;
 use Zend\Filter\StringTrim;
-use Zend\Filter\StripTags;
 use Zend\Filter\ToInt;
 use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
 use Zend\Validator\StringLength;
 
-class Album implements InputFilterAwareInterface
+use Application\Model\Entity;
+
+class Album extends Entity
 {
     public $id;
     public $artist;
@@ -19,38 +18,6 @@ class Album implements InputFilterAwareInterface
     public $genre;
     public $record_label;
     public $pre_release;
-
-    private $inputFilter;
-
-    public function exchangeArray(array $data)
-    {
-        $this->id           = !empty($data['id']) ? $data['id'] : null;
-        $this->artist       = !empty($data['artist']) ? $data['artist'] : null;
-        $this->title        = !empty($data['title']) ? $data['title'] : null;
-        $this->genre        = !empty($data['genre']) ? $data['genre'] : null;
-        $this->record_label = !empty($data['record_label']) ? $data['record_label'] : null;
-        $this->pre_release  = !empty($data['pre_release']) ? $data['pre_release'] : null;
-    }
-
-    public function getArrayCopy()
-    {
-        return [
-            'id'            => $this->id,
-            'artist'        => $this->artist,
-            'title'         => $this->title,
-            'genre'         => $this->genre,
-            'record_label'  => $this->record_label,
-            'pre_release'   => $this->pre_release
-        ];
-    }
-
-    public function setInputFilter(InputFilterInterface $inputFilter)
-    {
-        throw new DomainException(sprintf(
-            '%s does not allow injection of an alternate input filter',
-            __CLASS__
-        ));
-    }
 
     public function getInputFilter()
     {
@@ -72,7 +39,6 @@ class Album implements InputFilterAwareInterface
             'name' => 'artist',
             'required' => true,
             'filters' => [
-                ['name' => StripTags::class],
                 ['name' => StringTrim::class],
             ],
             'validators' => [
@@ -91,7 +57,6 @@ class Album implements InputFilterAwareInterface
             'name' => 'title',
             'required' => true,
             'filters' => [
-                ['name' => StripTags::class],
                 ['name' => StringTrim::class],
             ],
             'validators' => [
@@ -109,39 +74,21 @@ class Album implements InputFilterAwareInterface
         $inputFilter->add([
             'name' => 'genre',
             'required' => true,
-            'filters' => [
-                ['name' => StripTags::class],
-                ['name' => StringTrim::class],
-            ],
-            'validators' => [
-                [
-                    'name' => StringLength::class,
-                    'options' => [
-                        'encoding' => 'UTF-8',
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-            ],
+            'filters' => [],
+            'validators' => [],
         ]);
 
         $inputFilter->add([
             'name' => 'record_label',
             'required' => true,
-            'filters' => [
-                ['name' => StripTags::class],
-                ['name' => StringTrim::class],
-            ],
+            'filters' => [],
             'validators' => [],
         ]);
 
         $inputFilter->add([
             'name' => 'pre_release',
             'required' => true,
-            'filters' => [
-                ['name' => StripTags::class],
-                ['name' => StringTrim::class],
-            ],
+            'filters' => [],
             'validators' => [],
         ]);
 

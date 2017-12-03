@@ -4,41 +4,16 @@ namespace Album\Model;
 
 use DomainException;
 use Zend\Filter\StringTrim;
-use Zend\Filter\StripTags;
 use Zend\Filter\ToInt;
 use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
 use Zend\Validator\StringLength;
 
-class Genre implements InputFilterAwareInterface
+use Application\Model\Entity;
+
+class Genre extends Entity
 {
     public $id;
     public $name;
-
-    private $inputFilter;
-
-    public function exchangeArray(array $data)
-    {
-        $this->id   = ! empty($data['id']) ? $data['id'] : null;
-        $this->name = ! empty($data['name']) ? $data['name'] : null;
-    }
-
-    public function getArrayCopy()
-    {
-        return [
-            'id'    => $this->id,
-            'name'  => $this->name
-        ];
-    }
-
-    public function setInputFilter(InputFilterInterface $inputFilter)
-    {
-        throw new DomainException(sprintf(
-            '%s does not allow injection of an alternate input filter',
-            __CLASS__
-        ));
-    }
 
     public function getInputFilter()
     {

@@ -53,7 +53,10 @@ class RecordLabelTable
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
-            return;
+            return $this->tableGateway->
+                getAdapter()->
+                getDriver()->
+                getLastGeneratedValue('record_label_id_seq');
         }
 
         if (! $this->getRecordLabel($id)) {
