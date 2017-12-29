@@ -19,7 +19,9 @@
         "zendframework/zend-mvc": "^3.0.1",
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zend-db": "^2.8.1",
-        "zendframework/zend-mvc-form": "^1.0"
+        "zendframework/zend-mvc-form": "^1.0",
+        "zendframework/zend-math": "^3.0",
+        "zendframework/zend-session": "^2.8.3"
     },
     "autoload": {
         "psr-4": {

@@ -20,6 +20,11 @@ class AlbumForm extends Form
         ]);
 
         $this->add([
+            'name' => 'csrf',
+            'type' => 'csrf',
+        ]);
+
+        $this->add([
             'name' => 'title',
             'type' => 'text',
             'options' => [

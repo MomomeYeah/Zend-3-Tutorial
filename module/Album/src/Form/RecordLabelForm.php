@@ -17,6 +17,11 @@ class RecordLabelForm extends Form
         ]);
 
         $this->add([
+            'name' => 'csrf',
+            'type' => 'csrf',
+        ]);
+
+        $this->add([
             'name' => 'name',
             'type' => 'text',
             'options' => [
