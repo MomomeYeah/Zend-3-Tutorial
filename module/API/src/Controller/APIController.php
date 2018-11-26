@@ -5,14 +5,19 @@ namespace API\Controller;
 use Zend\Json\Server\Response as JsonResponse;
 use Zend\Json\Server\Server as JsonServer;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 
 class APIController extends AbstractActionController
 {
     protected $api;
 
-    public function __construct()
+    public function __construct(ServiceManager $serviceManager)
     {
-        $this->api = NULL;
+        $request = $serviceManager->get("Request");
+        $router = $serviceManager->get("Router");
+        $routeMatch = $router->match($request);
+        $api_class = $serviceManager->get($routeMatch->getParams()["api_class"]);
+        $this->api = $api_class;
     }
 
     public function endpointAction()

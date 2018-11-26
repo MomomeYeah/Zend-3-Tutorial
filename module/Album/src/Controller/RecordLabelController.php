@@ -6,15 +6,16 @@ use Album\Form\RecordLabelForm;
 use Album\Model\RecordLabel;
 use Album\Model\RecordLabelTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 class RecordLabelController extends AbstractActionController
 {
     private $recordLabelTable;
 
-    public function __construct(RecordLabelTable $recordLabelTable)
+    public function __construct(ServiceManager $serviceManager)
     {
-        $this->recordLabelTable = $recordLabelTable;
+        $this->recordLabelTable = $serviceManager->get(RecordLabelTable::class);
     }
 
     public function indexAction()
@@ -26,7 +27,6 @@ class RecordLabelController extends AbstractActionController
 
     public function addAction()
     {
-
         $form = new RecordLabelForm();
         $form->get('submit')->setValue('Add');
 

@@ -6,15 +6,16 @@ use Album\Form\GenreForm;
 use Album\Model\Genre;
 use Album\Model\GenreTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 class GenreController extends AbstractActionController
 {
     private $genreTable;
 
-    public function __construct(GenreTable $genreTable)
+    public function __construct(ServiceManager $serviceManager)
     {
-        $this->genreTable = $genreTable;
+        $this->genreTable = $serviceManager->get(GenreTable::class);
     }
 
     public function indexAction()

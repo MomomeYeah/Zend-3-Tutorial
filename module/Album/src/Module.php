@@ -6,6 +6,7 @@ use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\Mvc\Controller\LazyControllerAbstractFactory;
 
 class Module implements ConfigProviderInterface
 {
@@ -73,47 +74,22 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\AlbumAPIController::class => function($container) {
-                    return new Controller\AlbumAPIController(
-                        $container->get(Model\AlbumAPI::class)
-                    );
-                },
-                Controller\AlbumController::class => function($container) {
-                    return new Controller\AlbumController(
-                        $container->get(Model\AlbumTable::class),
-                        $container->get(Form\AlbumForm::class)
-                    );
-                },
+                Controller\AlbumAPIController::class => LazyControllerAbstractFactory::class,
+                Controller\AlbumController::class => LazyControllerAbstractFactory::class,
                 Controller\AlbumRESTController::class => function($container) {
                     return new Controller\AlbumRESTController(
                         $container->get(Model\AlbumAPI::class)
                     );
                 },
-                Controller\GenreAPIController::class => function($container) {
-                    return new Controller\GenreAPIController(
-                        $container->get(Model\GenreAPI::class)
-                    );
-                },
-                Controller\GenreController::class => function($container) {
-                    return new Controller\GenreController(
-                        $container->get(Model\GenreTable::class)
-                    );
-                },
+                Controller\GenreAPIController::class => LazyControllerAbstractFactory::class,
+                Controller\GenreController::class => LazyControllerAbstractFactory::class,
                 Controller\GenreRESTController::class => function($container) {
                     return new Controller\GenreRESTController(
                         $container->get(Model\GenreAPI::class)
                     );
                 },
-                Controller\RecordLabelAPIController::class => function($container) {
-                    return new Controller\RecordLabelAPIController(
-                        $container->get(Model\RecordLabelAPI::class)
-                    );
-                },
-                Controller\RecordLabelController::class => function($container) {
-                    return new Controller\RecordLabelController(
-                        $container->get(Model\RecordLabelTable::class)
-                    );
-                },
+                Controller\RecordLabelAPIController::class => LazyControllerAbstractFactory::class,
+                Controller\RecordLabelController::class => LazyControllerAbstractFactory::class,
                 Controller\RecordLabelRESTController::class => function($container) {
                     return new Controller\RecordLabelRESTController(
                         $container->get(Model\RecordLabelAPI::class)

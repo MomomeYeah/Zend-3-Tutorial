@@ -14,7 +14,8 @@ return [
                 'options' => [
                     'route' => '/api/json',
                     'defaults' => [
-                        'action'    => 'endpoint',
+                        'action'        => 'endpoint',
+                        'controller'    => Controller\APIController::class,
                     ],
                 ],
                 'child_routes' => [
@@ -23,7 +24,7 @@ return [
                         'options' => [
                             'route' => '/album',
                             'defaults' => [
-                                'controller' => \Album\Controller\AlbumAPIController::class
+                                'api_class' => \Album\Model\AlbumAPI::class,
                             ],
                         ],
                     ],
@@ -32,7 +33,7 @@ return [
                         'options' => [
                             'route' => '/genre',
                             'defaults' => [
-                                'controller' => \Album\Controller\GenreAPIController::class
+                                'api_class' => \Album\Model\GenreAPI::class,
                             ],
                         ],
                     ],
@@ -41,7 +42,7 @@ return [
                         'options' => [
                             'route' => '/record-label',
                             'defaults' => [
-                                'controller' => \Album\Controller\RecordLabelAPIController::class
+                                'api_class' => \Album\Model\RecordLabelAPI::class,
                             ],
                         ],
                     ],

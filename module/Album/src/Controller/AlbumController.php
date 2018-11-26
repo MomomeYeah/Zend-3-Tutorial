@@ -6,6 +6,7 @@ use Album\Form\AlbumForm;
 use Album\Model\Album;
 use Album\Model\AlbumTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 class AlbumController extends AbstractActionController
@@ -13,11 +14,10 @@ class AlbumController extends AbstractActionController
     private $albumTable;
     private $albumForm;
 
-    public function __construct(
-            AlbumTable $albumTable, AlbumForm $albumForm)
+    public function __construct(ServiceManager $serviceManager)
     {
-        $this->albumTable = $albumTable;
-        $this->albumForm = $albumForm;
+        $this->albumTable = $serviceManager->get(AlbumTable::class);
+        $this->albumForm = $serviceManager->get(AlbumForm::class);
     }
 
     public function indexAction()
