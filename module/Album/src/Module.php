@@ -23,13 +23,10 @@ class Module implements ConfigProviderInterface
                 },
                 Model\AlbumAPI::class => LazyControllerAbstractFactory::class,
                 Model\AlbumTable::class => LazyControllerAbstractFactory::class,
-                Model\AlbumTableGateway::class => LazyControllerAbstractFactory::class,
                 Model\GenreAPI::class => LazyControllerAbstractFactory::class,
                 Model\GenreTable::class => LazyControllerAbstractFactory::class,
-                Model\GenreTableGateway::class => LazyControllerAbstractFactory::class,
                 Model\RecordLabelAPI::class => LazyControllerAbstractFactory::class,
                 Model\RecordLabelTable::class => LazyControllerAbstractFactory::class,
-                Model\RecordLabelTableGateway::class => LazyControllerAbstractFactory::class,
             ],
         ];
     }
