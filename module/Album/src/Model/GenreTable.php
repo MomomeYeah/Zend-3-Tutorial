@@ -3,15 +3,14 @@
 namespace Album\Model;
 
 use RuntimeException;
-use Zend\Db\TableGateway\TableGatewayInterface;
+use Application\Model\ApplicationTable;
+use Zend\ServiceManager\ServiceManager;
 
-class GenreTable
+class GenreTable extends ApplicationTable
 {
-    private $tableGateway;
-
-    public function __construct(TableGatewayInterface $tableGateway)
+    public function __construct(ServiceManager $serviceManager)
     {
-        $this->tableGateway = $tableGateway;
+        parent::__construct($serviceManager, "genre");
     }
 
     public function fetchAll()
