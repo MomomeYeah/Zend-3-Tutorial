@@ -3,8 +3,8 @@
 namespace Album\Controller;
 
 use Album\Form\RecordLabelForm;
-use Album\Model\RecordLabel;
-use Album\Model\RecordLabelTable;
+use Album\Model\RecordLabel\RecordLabel;
+use Album\Model\RecordLabel\RecordLabelTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;

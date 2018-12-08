@@ -3,8 +3,10 @@
 namespace Album\Form;
 
 use Zend\Form\Form;
-use Album\Model\GenreTable;
-use Album\Model\RecordLabelTable;
+use Album\Form\Element\GenreSelect;
+use Album\Form\Element\RecordLabelSelect;
+use Album\Model\Genre\GenreTable;
+use Album\Model\RecordLabel\RecordLabelTable;
 
 class AlbumForm extends Form
 {
@@ -59,7 +61,7 @@ class AlbumForm extends Form
 
         $this->add([
             'name' => 'genre',
-            'type' => 'Album\Form\GenreSelect',
+            'type' => GenreSelect::class,
             'options' => [
                 'label' => 'Genre',
                 'label_attributes' => [

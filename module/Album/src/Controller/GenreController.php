@@ -3,8 +3,8 @@
 namespace Album\Controller;
 
 use Album\Form\GenreForm;
-use Album\Model\Genre;
-use Album\Model\GenreTable;
+use Album\Model\Genre\Genre;
+use Album\Model\Genre\GenreTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;

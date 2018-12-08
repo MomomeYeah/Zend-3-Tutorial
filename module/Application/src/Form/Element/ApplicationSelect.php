@@ -1,13 +1,12 @@
 <?php
 
-namespace Album\Form;
+namespace Application\Form\Element;
 
 use Zend\Form\Element\Select;
-use Zend\InputFilter\InputProviderInterface;
-use Zend\Validator\Explode as ExplodeValidator;
-use Album\Validator\RecordLabelValidator;
 
-class RecordLabelSelect extends Select implements InputProviderInterface {
+abstract class ApplicationSelect extends Select {
+
+    abstract protected function getValidatorType();
 
     /**
      * Get validator
@@ -16,14 +15,15 @@ class RecordLabelSelect extends Select implements InputProviderInterface {
      */
     protected function getValidator()
     {
+        $validatorType = $this->getValidatorType();
         if (null === $this->validator && ! $this->disableInArrayValidator()) {
-            $validator = new RecordLabelValidator([
+            $validator = new $validatorType([
                 'haystack' => $this->getValueOptionsValues(),
                 'strict'   => false
             ]);
 
             if ($this->isMultiple()) {
-                $validator = new ExplodeValidator([
+                $validator = new Explode([
                     'validator'      => $validator,
                     'valueDelimiter' => null, // skip explode if only one value
                 ]);
@@ -33,5 +33,4 @@ class RecordLabelSelect extends Select implements InputProviderInterface {
         }
         return $this->validator;
     }
-
 }

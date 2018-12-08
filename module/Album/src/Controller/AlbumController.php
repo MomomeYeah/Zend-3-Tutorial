@@ -3,8 +3,8 @@
 namespace Album\Controller;
 
 use Album\Form\AlbumForm;
-use Album\Model\Album;
-use Album\Model\AlbumTable;
+use Album\Model\Album\Album;
+use Album\Model\Album\AlbumTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;

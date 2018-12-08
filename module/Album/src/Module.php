@@ -17,16 +17,16 @@ class Module implements ConfigProviderInterface
         return [
             'factories' => [
                 Form\AlbumForm::class => function($container, $name, $options) {
-                    $genreTable = $container->get(Model\GenreTable::class);
-                    $recordLabelTable = $container->get(Model\RecordLabelTable::class);
+                    $genreTable = $container->get(Model\Genre\GenreTable::class);
+                    $recordLabelTable = $container->get(Model\RecordLabel\RecordLabelTable::class);
                     return new Form\AlbumForm($name, $options, $genreTable, $recordLabelTable);
                 },
-                Model\AlbumAPI::class => LazyControllerAbstractFactory::class,
-                Model\AlbumTable::class => LazyControllerAbstractFactory::class,
-                Model\GenreAPI::class => LazyControllerAbstractFactory::class,
-                Model\GenreTable::class => LazyControllerAbstractFactory::class,
-                Model\RecordLabelAPI::class => LazyControllerAbstractFactory::class,
-                Model\RecordLabelTable::class => LazyControllerAbstractFactory::class,
+                Model\Album\AlbumAPI::class => LazyControllerAbstractFactory::class,
+                Model\Album\AlbumTable::class => LazyControllerAbstractFactory::class,
+                Model\Genre\GenreAPI::class => LazyControllerAbstractFactory::class,
+                Model\Genre\GenreTable::class => LazyControllerAbstractFactory::class,
+                Model\RecordLabel\RecordLabelAPI::class => LazyControllerAbstractFactory::class,
+                Model\RecordLabel\RecordLabelTable::class => LazyControllerAbstractFactory::class,
             ],
         ];
     }
