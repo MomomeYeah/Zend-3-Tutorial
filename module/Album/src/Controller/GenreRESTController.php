@@ -2,7 +2,7 @@
 
 namespace Album\Controller;
 
-use Album\Model\GenreAPI;
+use Album\Model\Genre\GenreAPI;
 use REST\Controller\RESTController;
 
 class GenreRESTController extends RESTController

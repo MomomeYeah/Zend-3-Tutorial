@@ -4,7 +4,7 @@ namespace Album\Model\RecordLabel;
 
 use RuntimeException;
 use Application\Model\ApplicationTable;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 class RecordLabelTable extends ApplicationTable
 {

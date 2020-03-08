@@ -1,6 +1,6 @@
 <?php
 
-namespace Album\Model;
+namespace Album\Model\RecordLabel;
 
 class RecordLabelAPI
 {

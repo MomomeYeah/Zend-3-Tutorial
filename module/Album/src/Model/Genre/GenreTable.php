@@ -4,7 +4,7 @@ namespace Album\Model\Genre;
 
 use RuntimeException;
 use Application\Model\ApplicationTable;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 class GenreTable extends ApplicationTable
 {

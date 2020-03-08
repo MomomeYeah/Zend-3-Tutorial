@@ -1,8 +1,8 @@
 <?php
 namespace Application\Form\View\Helper;
 
-use Zend\Form\View\Helper\FormLabel as OriginalFormLabel;
-use Zend\Form\ElementInterface;
+use Laminas\Form\View\Helper\FormLabel as OriginalFormLabel;
+use Laminas\Form\ElementInterface;
 
 /**
  * Add mark (*) for all required elements inside a form.

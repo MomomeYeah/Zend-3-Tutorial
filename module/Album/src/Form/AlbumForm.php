@@ -2,7 +2,7 @@
 
 namespace Album\Form;
 
-use Zend\Form\Form;
+use Laminas\Form\Form;
 use Album\Form\Element\GenreSelect;
 use Album\Form\Element\RecordLabelSelect;
 use Album\Model\Genre\GenreTable;

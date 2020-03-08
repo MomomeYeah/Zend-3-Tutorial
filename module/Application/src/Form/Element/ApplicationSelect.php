@@ -2,7 +2,7 @@
 
 namespace Application\Form\Element;
 
-use Zend\Form\Element\Select;
+use Laminas\Form\Element\Select;
 
 abstract class ApplicationSelect extends Select {
 
@@ -11,7 +11,7 @@ abstract class ApplicationSelect extends Select {
     /**
      * Get validator
      *
-     * @return \Zend\Validator\ValidatorInterface
+     * @return \Laminas\Validator\ValidatorInterface
      */
     protected function getValidator()
     {

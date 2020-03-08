@@ -2,10 +2,10 @@
 
 namespace API\Controller;
 
-use Zend\Json\Server\Response as JsonResponse;
-use Zend\Json\Server\Server as JsonServer;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\Json\Server\Response as JsonResponse;
+use Laminas\Json\Server\Server as JsonServer;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\ServiceManager\ServiceManager;
 
 class APIController extends AbstractActionController
 {
@@ -31,7 +31,7 @@ class APIController extends AbstractActionController
         /** @var JsonResponse $jsonRpcResponse */
         $jsonRpcResponse = $server->handle();
 
-        /** @var \Zend\Http\Response $response */
+        /** @var \Laminas\Http\Response $response */
         $response = $this->getResponse();
 
         // Do we have an empty response?

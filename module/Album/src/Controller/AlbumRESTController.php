@@ -2,7 +2,7 @@
 
 namespace Album\Controller;
 
-use Album\Model\AlbumAPI;
+use Album\Model\Album\AlbumAPI;
 use REST\Controller\RESTController;
 
 class AlbumRESTController extends RESTController

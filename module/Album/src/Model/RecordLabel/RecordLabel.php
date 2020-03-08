@@ -3,10 +3,10 @@
 namespace Album\Model\RecordLabel;
 
 use DomainException;
-use Zend\Filter\StringTrim;
-use Zend\Filter\ToInt;
-use Zend\InputFilter\InputFilter;
-use Zend\Validator\StringLength;
+use Laminas\Filter\StringTrim;
+use Laminas\Filter\ToInt;
+use Laminas\InputFilter\InputFilter;
+use Laminas\Validator\StringLength;
 
 use Application\Model\Entity;
 

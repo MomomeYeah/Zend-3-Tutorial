@@ -5,9 +5,9 @@ namespace Album\Controller;
 use Album\Form\GenreForm;
 use Album\Model\Genre\Genre;
 use Album\Model\Genre\GenreTable;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceManager;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\View\Model\ViewModel;
 
 class GenreController extends AbstractActionController
 {

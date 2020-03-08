@@ -2,7 +2,7 @@
 
 namespace Album\Controller;
 
-use Album\Model\RecordLabelAPI;
+use Album\Model\RecordLabel\RecordLabelAPI;
 use REST\Controller\RESTController;
 
 class RecordLabelRESTController extends RESTController

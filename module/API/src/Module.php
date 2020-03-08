@@ -2,8 +2,8 @@
 
 namespace API;
 
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\Mvc\Controller\LazyControllerAbstractFactory;
 
 class Module implements ConfigProviderInterface
 {

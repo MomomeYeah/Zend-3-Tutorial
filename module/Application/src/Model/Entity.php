@@ -3,8 +3,8 @@
 namespace Application\Model;
 
 use DomainException;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
+use Laminas\InputFilter\InputFilterAwareInterface;
+use Laminas\InputFilter\InputFilterInterface;
 
 abstract class Entity implements InputFilterAwareInterface
 {
@@ -22,7 +22,7 @@ abstract class Entity implements InputFilterAwareInterface
     // where the names are given by the $key values, and the values of those
     // properties are given by the $value values
     //
-    // Zend\Stdlib\Hydrator\ArraySerializable expects this method to be present
+    // Laminas\Stdlib\Hydrator\ArraySerializable expects this method to be present
     // for object hydration
     public function exchangeArray(array $data)
     {
@@ -35,7 +35,7 @@ abstract class Entity implements InputFilterAwareInterface
     // create a data array of $key=>$value pairs based on the properties of
     // this object.  Only fields of $this are included, and not any ancestors
     //
-    // Zend\Stdlib\Hydrator\ArraySerializable expects this method to be present
+    // Laminas\Stdlib\Hydrator\ArraySerializable expects this method to be present
     // for object hydration
     public function getArrayCopy()
     {

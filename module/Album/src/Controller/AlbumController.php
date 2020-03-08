@@ -5,9 +5,9 @@ namespace Album\Controller;
 use Album\Form\AlbumForm;
 use Album\Model\Album\Album;
 use Album\Model\Album\AlbumTable;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceManager;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\View\Model\ViewModel;
 
 class AlbumController extends AbstractActionController
 {

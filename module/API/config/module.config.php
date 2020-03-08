@@ -2,9 +2,9 @@
 
 namespace API;
 
-use Zend\Router\Http\Literal;
-use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\Router\Http\Literal;
+use Laminas\Router\Http\Segment;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -24,7 +24,7 @@ return [
                         'options' => [
                             'route' => '/album',
                             'defaults' => [
-                                'api_class' => \Album\Model\AlbumAPI::class,
+                                'api_class' => \Album\Model\Album\AlbumAPI::class,
                             ],
                         ],
                     ],
@@ -33,7 +33,7 @@ return [
                         'options' => [
                             'route' => '/genre',
                             'defaults' => [
-                                'api_class' => \Album\Model\GenreAPI::class,
+                                'api_class' => \Album\Model\Genre\GenreAPI::class,
                             ],
                         ],
                     ],
@@ -42,7 +42,7 @@ return [
                         'options' => [
                             'route' => '/record-label',
                             'defaults' => [
-                                'api_class' => \Album\Model\RecordLabelAPI::class,
+                                'api_class' => \Album\Model\RecordLabel\RecordLabelAPI::class,
                             ],
                         ],
                     ],

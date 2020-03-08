@@ -4,7 +4,7 @@ namespace Album\Model\Album;
 
 use RuntimeException;
 use Application\Model\ApplicationTable;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 class AlbumTable extends ApplicationTable
 {

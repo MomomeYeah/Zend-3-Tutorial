@@ -5,9 +5,9 @@ namespace Album\Controller;
 use Album\Form\RecordLabelForm;
 use Album\Model\RecordLabel\RecordLabel;
 use Album\Model\RecordLabel\RecordLabelTable;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceManager;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\View\Model\ViewModel;
 
 class RecordLabelController extends AbstractActionController
 {

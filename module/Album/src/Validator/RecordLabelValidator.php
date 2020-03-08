@@ -2,7 +2,7 @@
 
 namespace Album\Validator;
 
-use Zend\Validator\InArray;
+use Laminas\Validator\InArray;
 
 class RecordLabelValidator extends InArray
 {

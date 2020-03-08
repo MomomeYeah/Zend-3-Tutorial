@@ -2,8 +2,8 @@
 
 namespace Album;
 
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\Mvc\Controller\LazyControllerAbstractFactory;
 
 class Module implements ConfigProviderInterface
 {
@@ -39,21 +39,21 @@ class Module implements ConfigProviderInterface
                 Controller\AlbumController::class => LazyControllerAbstractFactory::class,
                 Controller\AlbumRESTController::class => function($container) {
                     return new Controller\AlbumRESTController(
-                        $container->get(Model\AlbumAPI::class)
+                        $container->get(Model\Album\AlbumAPI::class)
                     );
                 },
                 Controller\GenreAPIController::class => LazyControllerAbstractFactory::class,
                 Controller\GenreController::class => LazyControllerAbstractFactory::class,
                 Controller\GenreRESTController::class => function($container) {
                     return new Controller\GenreRESTController(
-                        $container->get(Model\GenreAPI::class)
+                        $container->get(Model\Genre\GenreAPI::class)
                     );
                 },
                 Controller\RecordLabelAPIController::class => LazyControllerAbstractFactory::class,
                 Controller\RecordLabelController::class => LazyControllerAbstractFactory::class,
                 Controller\RecordLabelRESTController::class => function($container) {
                     return new Controller\RecordLabelRESTController(
-                        $container->get(Model\RecordLabelAPI::class)
+                        $container->get(Model\RecordLabel\RecordLabelAPI::class)
                     );
                 },
             ],
